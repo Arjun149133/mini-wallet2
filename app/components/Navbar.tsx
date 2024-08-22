@@ -1,7 +1,22 @@
+import Link from "next/link";
+
 export function Navbar() {
   return (
-    <div className=" flex justify-center w-full py-1">
-      <h1 className=" text-3xl font-bold text-slate-300">Mini-Wallet</h1>
+    <div className=" flex justify-between items-center w-full px-2 mt-3 absolute top-0 left-0 z-50">
+      <div className=" cursor-pointer">
+        <Link className=" text-2xl font-bold text-slate-500" href="/">
+          Wallets.Arj
+        </Link>
+      </div>
+      <div>
+        <div className=" space-x-5 mx-5">
+          <Link href="/sol">Solana</Link>
+          <Link href="/eth">Etherium</Link>
+          <Link href="/balance" className=" font-bold">
+            Balance
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
