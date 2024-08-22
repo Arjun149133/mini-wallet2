@@ -6,15 +6,20 @@ export function Wallets({
   wallets: { publicKey: string; privateKey: string }[];
 }) {
   return (
-    <div className=" flex flex-col items-center justify-center pt-4 space-y-4">
-      <h3 className=" text-xl font-semibold">Wallets</h3>
-      {wallets.map((wallet, index) => (
-        <WalletDisplay
-          key={index}
-          publicKey={wallet.publicKey}
-          privateKey={wallet.privateKey}
-        />
-      ))}
+    <div className=" flex flex-col items-center space-y-4">
+      <h3 className=" flex justify-center w-full text-xl font-semibold">
+        Wallets
+      </h3>
+      <div className="grid grid-cols-4 gap-16">
+        {wallets.map((wallet, index) => (
+          <WalletDisplay
+            key={index}
+            index={index + 1}
+            publicKey={wallet.publicKey}
+            privateKey={wallet.privateKey}
+          />
+        ))}
+      </div>
     </div>
   );
 }

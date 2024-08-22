@@ -11,7 +11,7 @@ export function Navbar() {
       <div>
         <div className=" space-x-5 mx-5">
           <Link href="/sol">Solana</Link>
-          <Link href="/eth">Etherium</Link>
+          <Link href="/eth">Ethereum</Link>
           <Link href="/balance" className=" font-bold">
             Balance
           </Link>

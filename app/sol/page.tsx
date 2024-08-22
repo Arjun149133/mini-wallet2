@@ -1,3 +1,9 @@
+import { SolDashboard } from "../components/SolDashboard";
+
 export default function Sol() {
-  return <div>Hello sol!</div>;
+  return (
+    <div className=" mt-10">
+      <SolDashboard />
+    </div>
+  );
 }

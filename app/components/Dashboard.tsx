@@ -32,7 +32,7 @@ export function Dashboard() {
           Solana
         </PrimaryButton>
         <PrimaryButton onClick={() => router.push("/eth")}>
-          Etherium
+          Ethereum
         </PrimaryButton>
       </div>
     </div>
