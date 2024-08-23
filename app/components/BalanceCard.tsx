@@ -3,6 +3,7 @@ import { Form } from "./Form";
 import { balanceState, networkState, publicKeyState } from "../state/state";
 import { useRecoilState } from "recoil";
 import axios from "axios";
+import { useEffect } from "react";
 
 export function BalanceCard() {
   const [balance, setBalance] = useRecoilState(balanceState);
@@ -55,6 +56,13 @@ export function BalanceCard() {
       console.error("Error: ", error);
     }
   };
+
+  useEffect(() => {
+    // Clean up function to reset the state
+    return () => {
+      setBalance("Enter public key and press submit to get balance");
+    };
+  }, [setBalance]);
   return (
     <div className="flex flex-col justify-center items-center rounded-lg p-6 w-2/4 mt-20 bg-slate-100">
       <Form onSubmit={onSubmit} />

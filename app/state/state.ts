@@ -10,7 +10,7 @@ export const mnemonicEth = atom<string>({
 });
 export const balanceState = atom<string>({
   key: "balanceState",
-  default: "Enter public key to get balance",
+  default: "Enter public key and press submit to get balance",
 });
 export const publicKeyState = atom<string>({
   key: "publicKey",
