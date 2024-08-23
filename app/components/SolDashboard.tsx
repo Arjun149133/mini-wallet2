@@ -1,6 +1,6 @@
 "use client";
 import { useRecoilState } from "recoil";
-import { mnemonicSol } from "../state/state";
+import { mnemonicSol, solWalletsState } from "../state/state";
 import { PrimaryButton } from "./Button";
 import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 import { useState } from "react";
@@ -13,9 +13,7 @@ import bs58 from "bs58";
 
 export function SolDashboard() {
   const [mnemonic, setMnemonic] = useRecoilState(mnemonicSol);
-  const [solWallets, setSolWallets] = useState<
-    { publicKey: string; privateKey: string }[]
-  >([]);
+  const [solWallets, setSolWallets] = useRecoilState(solWalletsState);
   const [solWalletCount, setSolWalletCount] = useState(0);
   const generateSeed = () => {
     const mnemo = generateMnemonic();

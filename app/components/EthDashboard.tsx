@@ -1,18 +1,16 @@
 "use client";
 import { useRecoilState } from "recoil";
-import { mnemonicEth } from "../state/state";
+import { ethWalletsState, mnemonicEth } from "../state/state";
 import { PrimaryButton } from "./Button";
 import { generateMnemonic, mnemonicToSeedSync } from "bip39";
-import { useState } from "react";
+import { use, useState } from "react";
 import { Mnemonic } from "./Mnemonic";
 import { Wallets } from "./Wallets";
 import { ethers } from "ethers";
 
 export function EthDashboard() {
   const [mnemonic, setMnemonic] = useRecoilState(mnemonicEth);
-  const [ethWallets, setEthWallets] = useState<
-    { publicKey: string; privateKey: string }[]
-  >([]);
+  const [ethWallets, setEthWallets] = useRecoilState(ethWalletsState);
   const [ethWalletCount, setEthWalletCount] = useState(0);
   const generateSeed = () => {
     const mnemo = generateMnemonic();
