@@ -6,7 +6,7 @@ import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 import { useState } from "react";
 import { Mnemonic } from "./Mnemonic";
 import { Wallets } from "./Wallets";
-import { Wallet } from "ethers";
+import { ethers } from "ethers";
 
 export function EthDashboard() {
   const [mnemonic, setMnemonic] = useRecoilState(mnemonicEth);
@@ -19,18 +19,15 @@ export function EthDashboard() {
     setMnemonic(mnemo);
   };
 
-  //   const path = `m/44'/60'/${ethWalletCount}'/0'`;
   const addEthereumWallet = () => {
     try {
       const seed = mnemonicToSeedSync(mnemonic);
-      const root = hdkey.fromMasterSeed(seed);
-      const masterPrivateKey = root.privateKey.toString("hex");
-      const derivedNode = hdKey.derivePath(`m/44'/60'/0'/0/${ethWalletCount}`);
+      const node = ethers.HDNodeWallet.fromSeed(seed);
 
+      const derivedNode = node.derivePath(`m/44'/60'/${ethWalletCount}'/0'`);
+
+      const publicKey = derivedNode.address;
       const privateKey = derivedNode.privateKey;
-      const wallet = new Wallet(privateKey);
-
-      const publicKey = wallet.address;
 
       setEthWalletCount((prev) => prev + 1);
       setEthWallets((prev) => [
